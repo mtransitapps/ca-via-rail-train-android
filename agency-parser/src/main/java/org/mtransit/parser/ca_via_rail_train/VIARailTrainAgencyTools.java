@@ -23,6 +23,7 @@ import java.util.Locale;
 
 // https://www.viarail.ca/en/developer-resources
 // https://www.viarail.ca/fr/ressources-developpeurs
+// TODO Real-Time (custom) https://tsimobile.viarail.ca/data/allData.json
 public class VIARailTrainAgencyTools extends DefaultAgencyTools {
 
 	public static void main(@NotNull String[] args) {
