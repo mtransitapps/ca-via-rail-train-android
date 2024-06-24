@@ -58,7 +58,7 @@ public class VIARailTrainAgencyTools extends DefaultAgencyTools {
 		return true;
 	}
 
-	private static final String AGENCY_COLOR = "#FFCB06"; // YELLOW (from GTFS)
+	private static final String AGENCY_COLOR = "FFCC00"; // YELLOW (from website)
 
 	@NotNull
 	@Override
@@ -153,22 +153,69 @@ public class VIARailTrainAgencyTools extends DefaultAgencyTools {
 		return CleanUtils.cleanLabel(routeLongName);
 	}
 
+	@Override
+	public @Nullable String fixColor(@Nullable String color) {
+		if (color != null) {
+			switch (color.toUpperCase(Locale.ENGLISH)) {
+			case "FFCB06": // YELLOW (from GTFS)
+				return AGENCY_COLOR;
+			}
+		}
+		return super.fixColor(color);
+	}
+
+	// https://www.viarail.ca/en/explore-our-destinations/trains
+	@Override
+	public @Nullable String provideMissingRouteColor(@NotNull GRoute gRoute) {
+		//noinspection deprecation
+		switch (gRoute.getRouteId()) {
+		// Western Canada
+		case "8-119": // Vancouver - Toronto
+			return "E31019"; // RED (from website)
+		// Ontario & Québec
+		case "119-93": // Toronto - London
+		case "119-58": // Toronto - Kingston
+		case "119-618": // Toronto - Windsor
+		case "119-341": // Toronto - Sarnia
+		case "226-119": // Montréal - Toronto
+		case "617-119": // Ottawa - Toronto
+		case "617-226": // Ottawa - Montréal
+		case "617-628": // Ottawa - Québec
+		case "628-226": // Québec - Montréal
+		case "628-576": // Québec - Fallowfield
+			return "323198"; // PURPLE (from website)
+		// Atlantic Canada
+		case "226-620": // Montréal - Halifax
+			return "0088AE"; // BLUE (from website)
+		// Scenic Adventure routes
+		case "21-458": // Jasper - Prince Rupert
+			return "EA63A4"; // PINK (from website)
+		case "621-116": // Sudbury - White River
+			return "2AAC82"; // GREEN (from website)
+		case "149-435": // The Pas - Churchill
+		case "388-435": // Winnipeg - Churchill
+			return "00B3FD"; // LIGHT BLUE (from website)
+		case "226-460": // Montréal - Senneterre
+		case "226-444": // Montréal - Jonquière
+			return "FF6D00"; // ORANGE (from GTFS)
+		// US
+		case "119-120": // Toronto - New York
+			return null; // use default
+		default:
+			throw new MTLog.Fatal("Unexpected route color for %s!", gRoute.toStringPlus());
+		}
+	}
+
 	@NotNull
 	@Override
 	public String cleanTripHeadsign(@NotNull String tripHeading) {
-		return CleanUtils.cleanLabelFR(tripHeading);
-	}
-
-	@Override
-	public boolean directionFinderEnabled() {
-		return true;
+		return CleanUtils.cleanLabel(tripHeading);
 	}
 
 	@NotNull
 	@Override
 	public String cleanStopName(@NotNull String gStopName) {
-		gStopName = CleanUtils.cleanBounds(Locale.FRENCH, gStopName);
-		gStopName = CleanUtils.cleanStreetTypes(gStopName);
-		return CleanUtils.cleanLabelFR(gStopName);
+		gStopName = CleanUtils.SAINT.matcher(gStopName).replaceAll(CleanUtils.SAINT_REPLACEMENT);
+		return CleanUtils.cleanLabel(gStopName);
 	}
 }
