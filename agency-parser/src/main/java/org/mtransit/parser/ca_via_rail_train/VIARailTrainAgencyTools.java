@@ -165,6 +165,7 @@ public class VIARailTrainAgencyTools extends DefaultAgencyTools {
 	}
 
 	// https://www.viarail.ca/en/explore-our-destinations/trains
+	// https://www.viarail.ca/sites/all/files/media/destinations/images/img-carte-canada-all-en.svg
 	@Override
 	public @Nullable String provideMissingRouteColor(@NotNull GRoute gRoute) {
 		//noinspection deprecation
