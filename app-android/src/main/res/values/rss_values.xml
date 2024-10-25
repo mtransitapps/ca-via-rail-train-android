@@ -7,8 +7,8 @@
     <bool name="rss_use_custom_ssl_certificate">true</bool>
     <string name="rss_encoding">utf-8</string>
     <string-array name="rss_feeds">
-        <item>https://blog.viarail.ca/feed/</item>
-        <item>https://blogue.viarail.ca/feed/</item>
+        <!-- <item>https://blog.viarail.ca/feed/</item> -->
+        <!-- <item>https://blogue.viarail.ca/feed/</item> -->
     </string-array>
     <string-array name="rss_feeds_author_icon">
         <item>https://www.viarail.ca/favicon.ico</item>
