@@ -15,7 +15,11 @@ import org.mtransit.commons.Cleaner;
 import org.mtransit.parser.DefaultAgencyTools;
 import org.mtransit.parser.MTLog;
 import org.mtransit.parser.gtfs.data.GRoute;
+import org.mtransit.parser.gtfs.data.GSpec;
+import org.mtransit.parser.gtfs.data.GTrip;
 import org.mtransit.parser.mt.data.MAgency;
+import org.mtransit.parser.mt.data.MRoute;
+import org.mtransit.parser.mt.data.MTrip;
 
 import java.util.Arrays;
 import java.util.List;
@@ -205,6 +209,20 @@ public class VIARailTrainAgencyTools extends DefaultAgencyTools {
 		default:
 			throw new MTLog.Fatal("Unexpected route color for %s!", gRoute.toStringPlus());
 		}
+	}
+
+	@Override
+	public void setTripHeadsign(@NotNull MRoute mRoute, @NotNull MTrip mTrip, @NotNull GTrip gTrip, @NotNull GSpec gtfs) {
+		if (gTrip.getDirectionId() == null) {
+			//noinspection deprecation
+			if ("628-576".equals(gTrip.getRouteId())) {
+				//noinspection deprecation
+				if ("556".equals(gTrip.getTripId())) {
+					gTrip.setDirectionId(0); // TODO remove (2024-10-29)
+				}
+			}
+		}
+		super.setTripHeadsign(mRoute, mTrip, gTrip, gtfs);
 	}
 
 	@NotNull
