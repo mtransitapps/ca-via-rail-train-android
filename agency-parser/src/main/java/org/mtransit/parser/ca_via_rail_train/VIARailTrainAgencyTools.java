@@ -211,12 +211,11 @@ public class VIARailTrainAgencyTools extends DefaultAgencyTools {
 		}
 	}
 
+	@SuppressWarnings("DiscouragedApi")
 	@Override
 	public void setTripHeadsign(@NotNull MRoute mRoute, @NotNull MTrip mTrip, @NotNull GTrip gTrip, @NotNull GSpec gtfs) {
 		if (gTrip.getDirectionId() == null) {
-			//noinspection deprecation
 			if ("628-576".equals(gTrip.getRouteId())) {
-				//noinspection deprecation
 				if ("556".equals(gTrip.getTripId())) {
 					gTrip.setDirectionId(0); // TODO remove (2024-10-29)
 				}
