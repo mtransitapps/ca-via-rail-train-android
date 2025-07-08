@@ -40,11 +40,6 @@ public class VIARailTrainAgencyTools extends DefaultAgencyTools {
 		return LANG_EN;
 	}
 
-	@Override
-	public boolean defaultExcludeEnabled() {
-		return true;
-	}
-
 	@NotNull
 	@Override
 	public String getAgencyName() {
@@ -87,7 +82,7 @@ public class VIARailTrainAgencyTools extends DefaultAgencyTools {
 
 	@Override
 	public long getRouteId(@NotNull GRoute gRoute) {
-		//noinspection deprecation
+		//noinspection DiscouragedApi
 		String routeIdS = gRoute.getRouteId();
 		routeIdS = ROUTE_ID_CLEAN.clean(routeIdS);
 		return Long.parseLong(routeIdS);
@@ -154,7 +149,7 @@ public class VIARailTrainAgencyTools extends DefaultAgencyTools {
 	@Override
 	public String cleanRouteLongName(@NotNull String routeLongName) {
 		routeLongName = CleanUtils.SAINT.matcher(routeLongName).replaceAll(CleanUtils.SAINT_REPLACEMENT);
-		return CleanUtils.cleanLabel(routeLongName);
+		return CleanUtils.cleanLabel(getFirstLanguageNN(), routeLongName);
 	}
 
 	@Override
@@ -172,7 +167,7 @@ public class VIARailTrainAgencyTools extends DefaultAgencyTools {
 	// https://www.viarail.ca/sites/all/files/media/destinations/images/img-carte-canada-all-en.svg
 	@Override
 	public @Nullable String provideMissingRouteColor(@NotNull GRoute gRoute) {
-		//noinspection deprecation
+		//noinspection DiscouragedApi
 		switch (gRoute.getRouteId()) {
 		// Western Canada
 		case "8-119": // Vancouver - Toronto
@@ -215,9 +210,19 @@ public class VIARailTrainAgencyTools extends DefaultAgencyTools {
 	@Override
 	public void setTripHeadsign(@NotNull MRoute mRoute, @NotNull MTrip mTrip, @NotNull GTrip gTrip, @NotNull GSpec gtfs) {
 		if (gTrip.getDirectionId() == null) {
+			if ("226-444".equals(gTrip.getRouteId())) {
+				if (gTrip.getTripHeadsignOrDefault().equals("Jonquière")) {
+					gTrip.setDirectionId(0); // TODO remove (2025-07-08)
+				}
+			}
+			if ("226-460".equals(gTrip.getRouteId())) {
+				if (gTrip.getTripHeadsignOrDefault().equals("Senneterre")) {
+					gTrip.setDirectionId(0); // TODO remove (2025-07-08)
+				}
+			}
 			if ("628-576".equals(gTrip.getRouteId())) {
-				if ("556".equals(gTrip.getTripId())) {
-					gTrip.setDirectionId(0); // TODO remove (2024-10-29)
+				if (gTrip.getTripHeadsignOrDefault().equals("Ottawa")) {
+					gTrip.setDirectionId(0); // TODO remove (2025-07-08)
 				}
 			}
 		}
@@ -227,13 +232,13 @@ public class VIARailTrainAgencyTools extends DefaultAgencyTools {
 	@NotNull
 	@Override
 	public String cleanTripHeadsign(@NotNull String tripHeading) {
-		return CleanUtils.cleanLabel(tripHeading);
+		return CleanUtils.cleanLabel(getFirstLanguageNN(), tripHeading);
 	}
 
 	@NotNull
 	@Override
 	public String cleanStopName(@NotNull String gStopName) {
 		gStopName = CleanUtils.SAINT.matcher(gStopName).replaceAll(CleanUtils.SAINT_REPLACEMENT);
-		return CleanUtils.cleanLabel(gStopName);
+		return CleanUtils.cleanLabel(getFirstLanguageNN(), gStopName);
 	}
 }
