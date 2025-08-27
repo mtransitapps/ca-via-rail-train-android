@@ -83,7 +83,7 @@ public class VIARailTrainAgencyTools extends DefaultAgencyTools {
 	@Override
 	public long getRouteId(@NotNull GRoute gRoute) {
 		//noinspection DiscouragedApi
-		String routeIdS = gRoute.getRouteId();
+		String routeIdS = gRoute.getOriginalRouteId();
 		routeIdS = ROUTE_ID_CLEAN.clean(routeIdS);
 		return Long.parseLong(routeIdS);
 	}
@@ -168,7 +168,7 @@ public class VIARailTrainAgencyTools extends DefaultAgencyTools {
 	@Override
 	public @Nullable String provideMissingRouteColor(@NotNull GRoute gRoute) {
 		//noinspection DiscouragedApi
-		switch (gRoute.getRouteId()) {
+		switch (gRoute.getOriginalRouteId()) {
 		// Western Canada
 		case "8-119": // Vancouver - Toronto
 			return "E31019"; // RED (from website)
@@ -210,17 +210,17 @@ public class VIARailTrainAgencyTools extends DefaultAgencyTools {
 	@Override
 	public void setDirectionHeadsign(@NotNull MRoute mRoute, @NotNull MDirection mDirection, @NotNull GTrip gTrip, @NotNull GSpec gtfs) {
 		if (gTrip.getDirectionId() == null) {
-			if ("226-444".equals(gTrip.getRouteId())) {
+			if ("226-444".equals(gTrip.getOriginalRouteId())) {
 				if (gTrip.getTripHeadsignOrDefault().equals("Jonquière")) {
 					gTrip.setDirectionId(0); // TODO remove (2025-07-08)
 				}
 			}
-			if ("226-460".equals(gTrip.getRouteId())) {
+			if ("226-460".equals(gTrip.getOriginalRouteId())) {
 				if (gTrip.getTripHeadsignOrDefault().equals("Senneterre")) {
 					gTrip.setDirectionId(0); // TODO remove (2025-07-08)
 				}
 			}
-			if ("628-576".equals(gTrip.getRouteId())) {
+			if ("628-576".equals(gTrip.getOriginalRouteId())) {
 				if (gTrip.getTripHeadsignOrDefault().equals("Ottawa")) {
 					gTrip.setDirectionId(0); // TODO remove (2025-07-08)
 				}
