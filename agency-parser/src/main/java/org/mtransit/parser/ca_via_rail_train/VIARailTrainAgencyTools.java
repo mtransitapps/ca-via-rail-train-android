@@ -18,8 +18,8 @@ import org.mtransit.parser.gtfs.data.GRoute;
 import org.mtransit.parser.gtfs.data.GSpec;
 import org.mtransit.parser.gtfs.data.GTrip;
 import org.mtransit.parser.mt.data.MAgency;
+import org.mtransit.parser.mt.data.MDirection;
 import org.mtransit.parser.mt.data.MRoute;
-import org.mtransit.parser.mt.data.MTrip;
 
 import java.util.Arrays;
 import java.util.List;
@@ -208,7 +208,7 @@ public class VIARailTrainAgencyTools extends DefaultAgencyTools {
 
 	@SuppressWarnings("DiscouragedApi")
 	@Override
-	public void setTripHeadsign(@NotNull MRoute mRoute, @NotNull MTrip mTrip, @NotNull GTrip gTrip, @NotNull GSpec gtfs) {
+	public void setDirectionHeadsign(@NotNull MRoute mRoute, @NotNull MDirection mDirection, @NotNull GTrip gTrip, @NotNull GSpec gtfs) {
 		if (gTrip.getDirectionId() == null) {
 			if ("226-444".equals(gTrip.getRouteId())) {
 				if (gTrip.getTripHeadsignOrDefault().equals("Jonquière")) {
@@ -226,7 +226,7 @@ public class VIARailTrainAgencyTools extends DefaultAgencyTools {
 				}
 			}
 		}
-		super.setTripHeadsign(mRoute, mTrip, gTrip, gtfs);
+		super.setDirectionHeadsign(mRoute, mDirection, gTrip, gtfs);
 	}
 
 	@NotNull
