@@ -1,0 +1,8 @@
+{
+    "target_route_type_id": 2,
+    "default_color": "FFCC00",
+    "default_color_comment": "YELLOW (from website)",
+    "default_color_enabled": true,
+    "default_strings_cleaner_enabled": true,
+    "ignore_upper_case_words": []
+}
