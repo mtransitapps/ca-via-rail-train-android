@@ -1,0 +1,267 @@
+{
+    "route_id_cleanup_regex": "-",
+    "route_id_cleanup_regex_comment": "no guarantee it doesn't merge routes by mistake (?)",
+    "default_route_id_enabled": true,
+    "use_route_short_name_for_route_id": false,
+    "use_route_short_name_for_route_id_comment": "don't make sense for humans",
+    "use_route_long_name_for_route_short_name": true,
+    "route_short_name_cleaners_comment": "Cities short name from GTFS stops.txt stop_code",
+    "route_short_name_cleaners": [
+        {
+            "regex": "(montr(é|e)al)",
+            "ignore_case": true,
+            "replacement": "MTRL"
+        },
+        {
+            "regex": "(toronto)",
+            "ignore_case": true,
+            "replacement": "TRTO"
+        },
+        {
+            "regex": "(ottawa)",
+            "ignore_case": true,
+            "replacement": "OTTW"
+        },
+        {
+            "regex": "(qu(e|é)bec)",
+            "ignore_case": true,
+            "replacement": "QBEC"
+        },
+        {
+            "regex": "(kingston)",
+            "ignore_case": true,
+            "replacement": "KGON"
+        },
+        {
+            "regex": "(london)",
+            "ignore_case": true,
+            "replacement": "LNDN"
+        },
+        {
+            "regex": "(windsor)",
+            "ignore_case": true,
+            "replacement": "WDON"
+        },
+        {
+            "regex": "(vancouver)",
+            "ignore_case": true,
+            "replacement": "VCVR"
+        },
+        {
+            "regex": "(jasper)",
+            "ignore_case": true,
+            "replacement": "JASP"
+        },
+        {
+            "regex": "(prince rupert)",
+            "ignore_case": true,
+            "replacement": "PRUP"
+        },
+        {
+            "regex": "(new York)",
+            "ignore_case": true,
+            "replacement": "NEWY"
+        },
+        {
+            "regex": "(niagara falls)",
+            "ignore_case": true,
+            "replacement": "NIAG"
+        },
+        {
+            "regex": "(sarnia)",
+            "ignore_case": true,
+            "replacement": "SARN"
+        },
+        {
+            "regex": "(the pas)",
+            "ignore_case": true,
+            "replacement": "TPAS"
+        },
+        {
+            "regex": "(churchill)",
+            "ignore_case": true,
+            "replacement": "CHUR"
+        },
+        {
+            "regex": "(sudbury)",
+            "ignore_case": true,
+            "replacement": "SUDB"
+        },
+        {
+            "regex": "(white river)",
+            "ignore_case": true,
+            "replacement": "WHTR"
+        },
+        {
+            "regex": "(fallowfield)",
+            "ignore_case": true,
+            "replacement": "FALL"
+        },
+        {
+            "regex": "(jonquière)",
+            "ignore_case": true,
+            "replacement": "JONQ"
+        },
+        {
+            "regex": "(senneterre)",
+            "ignore_case": true,
+            "replacement": "SENN"
+        },
+        {
+            "regex": "(halifax)",
+            "ignore_case": true,
+            "replacement": "HLFX"
+        },
+        {
+            "regex": "(winnipeg)",
+            "ignore_case": true,
+            "replacement": "WNPG"
+        },
+        {
+            "regex": "\\s+-\\s+",
+            "replacement": "-",
+            "comment": "Remove spaces around '-' in route short names"
+        }
+    ],
+    "default_route_long_name_enabled": true,
+    "route_colors_ignored": [
+        "FFCB06"
+    ],
+    "route_colors_comment": "https://www.viarail.ca/en/explore-our-destinations/trains",
+    "route_colors_comment_2": "https://www.viarail.ca/sites/all/files/media/destinations/images/img-carte-canada-all-en.svg",
+    "route_colors": [
+        {
+            "original_route_id": "8-119",
+            "route_id": "8119",
+            "route_short_name": "VCVR-TRTO",
+            "route_comment": "Vancouver - Toronto",
+            "color": "E31019",
+            "color_comment": "RED (from website)"
+        },
+        {
+            "original_route_id": "119-93",
+            "route_id": "11993",
+            "route_comment": "Toronto - London",
+            "color": "323198",
+            "color_comment": "PURPLE (from website)"
+        },
+        {
+            "original_route_id": "119-58",
+            "route_id": "11958",
+            "route_comment": "Toronto - Kingston",
+            "color": "323198",
+            "color_comment": "PURPLE (from website)"
+        },
+        {
+            "original_route_id": "119-618",
+            "route_id": "119618",
+            "route_comment": "Toronto - Windsor",
+            "color": "323198",
+            "color_comment": "PURPLE (from website)"
+        },
+        {
+            "original_route_id": "119-341",
+            "route_id": "119341",
+            "route_comment": "Toronto - Sarnia",
+            "color": "323198",
+            "color_comment": "PURPLE (from website)"
+        },
+        {
+            "original_route_id": "226-119",
+            "route_id": "226119",
+            "route_comment": "Montréal - Toronto",
+            "color": "323198",
+            "color_comment": "PURPLE (from website)"
+        },
+        {
+            "original_route_id": "617-119",
+            "route_id": "617119",
+            "route_comment": "Ottawa - Toronto",
+            "color": "323198",
+            "color_comment": "PURPLE (from website)"
+        },
+        {
+            "original_route_id": "617-226",
+            "route_id": "617226",
+            "route_comment": "Ottawa - Montréal",
+            "color": "323198",
+            "color_comment": "PURPLE (from website)"
+        },
+        {
+            "original_route_id": "617-628",
+            "route_id": "617628",
+            "route_comment": "Ottawa - Québec",
+            "color": "323198",
+            "color_comment": "PURPLE (from website)"
+        },
+        {
+            "original_route_id": "628-226",
+            "route_id": "628226",
+            "route_comment": "Québec - Montréal",
+            "color": "323198",
+            "color_comment": "PURPLE (from website)"
+        },
+        {
+            "original_route_id": "628-576",
+            "route_id": "628576",
+            "route_comment": "Québec - Fallowfield",
+            "color": "323198",
+            "color_comment": "PURPLE (from website)"
+        },
+        {
+            "original_route_id": "226-620",
+            "route_id": "226620",
+            "route_comment": "Montréal - Halifax",
+            "color": "0088AE",
+            "color_comment": "TEAL (from website)"
+        },
+        {
+            "original_route_id": "21-458",
+            "route_id": "21458",
+            "route_comment": "Jasper - Prince Rupert",
+            "color": "EA63A4",
+            "color_comment": "PINK (from website)"
+        },
+        {
+            "original_route_id": "621-116",
+            "route_id": "621116",
+            "route_comment": "Sudbury - White River",
+            "color": "2AAC82",
+            "color_comment": "GREEN (from website)"
+        },
+        {
+            "original_route_id": "149-435",
+            "route_id": "149435",
+            "route_comment": "The Pas - Churchill",
+            "color": "00B3FD",
+            "color_comment": "BLUE (from website)"
+        },
+        {
+            "original_route_id": "388-435",
+            "route_id": "388435",
+            "route_comment": "Winnipeg - Churchill",
+            "color": "00B3FD",
+            "color_comment": "BLUE (from website)"
+        },
+        {
+            "original_route_id": "226-460",
+            "route_id": "226460",
+            "route_comment": "Montréal - Senneterre",
+            "color": "FF6D00",
+            "color_comment": "ORANGE (from website)"
+        },
+        {
+            "original_route_id": "226-444",
+            "route_id": "226444",
+            "route_comment": "Montréal - Jonquière",
+            "color": "FF6D00",
+            "color_comment": "ORANGE (from website)"
+        }
+    ],
+    "direction_id_use_other_trips_with_same_headsign": true,
+    "direction_id_use_other_trips_with_same_headsign_comment": "Some trips are missing direction_id values.",
+    "direction_finder_enabled": true,
+    "trip_headsign_remove_via": true,
+    "trip_headsign_cleaners": [],
+    "stop_name_cleaners": []
+}
